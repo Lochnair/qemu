@@ -18,6 +18,7 @@
  */
 
 #include "qemu/osdep.h"
+#include "qemu/atomic.h"
 #include "hw/hw.h"
 #include "hw/pci/pci.h"
 #include "intel-hda.h"
@@ -128,6 +129,7 @@ static void hda_codec_parse_fmt(uint32_t format, struct audsettings *as)
 #include  "hda-codec-common.h"
 
 #define HDA_TIMER_TICKS (SCALE_MS)
+#define MAX_CORR (SCALE_US * 100)
 #define B_SIZE sizeof(st->buf)
 #define B_MASK (sizeof(st->buf) - 1)
 
